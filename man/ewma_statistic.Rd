@@ -7,11 +7,22 @@
 ewma_statistic(x, t, lambda, x0)
 }
 \arguments{
-\item{x0}{}
+\item{x}{A numeric vector}
+
+\item{t}{An integer vector}
+
+\item{lambda}{A numeric value between 0 and 1 inclusive that indicates the smoothing constant of EWMA charts.
+It determines the weight given to recent data points. A smaller \(\lambda\) gives more weight to recent observations,
+making the chart more sensitive to shifts.}
+
+\item{x0}{numeric: target mean.}
 }
 \value{
-
+A vector of EWMA
 }
 \description{
 Exponentially Weighted Moving Average statistic
+}
+\examples{
+ewma_statistic(x = 1:50, t = 1:30, lambda = 0.15, x0 = 2)
 }

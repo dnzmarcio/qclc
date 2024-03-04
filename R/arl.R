@@ -1,20 +1,32 @@
-#' Average Length Run for Moving Average 
+#' Calibration parameters for MA quality control charts
 #'
-#' @param x
-#' @param mu
-#' @param sigma2
-#' @param L
-#' @param omega
-#' @param max.arl
-#' @param arl
-#' @param nboot
-#' @param ncores
-#' @param seed
+#' This function produces a data frame for the calibration of Moving Average 
+#' charts, which includes the control limit factor \code{L}, 
+#' Average Run Length \code{ARL}, and either the False Positive rate 
+#' (when the process is in control) or the True Negative rate 
+#' (when the process is out of control).
 #'
-#' @return
+#' @param x A numeric vector containing the data points for which to calculate the MA.
+#' @param mu double; target mean.
+#' @param sigma2 double; variance of the MA statistic.
+#' @param L integer: the control limit factor; represents the width of the control limits in terms of multiples of the standard deviation.
+#' @param omega An integer
+#' @param max.arl integer; Maximum Average Run Length.
+#' @param arl integer; Average Run Length.
+#' @param scenario A logical evaluating to TRUE or FALSE indicating whether the process is under control \code{scenario} = 0, or the process out of control \code{scenario} = 1.
+#' @param nboot Number of iterations to calculate the MA statistics
+#' @param ncores integer; the number of CPU cores to use for parallel processing. 
+#' @param seed integer; to initialize the Random Number Generator to a known state.
+#'
+#' @return This function produces a data frame for calibration, 
+#' which includes the control limit factor \code{L}, Average Run Length \code{ARL}, 
+#' and either the False Positive rate (when the process is in control) 
+#' or the True Negative rate (when the process is out of control).
+#' 
 #' @export
 #'
-#' @examples
+#' @examples 
+
 arl_ma <- function(x, mu, sigma2, omega,
                    L = seq(1, 3, by = 0.25), 
                    max.arl = 10000, arl = 100,
@@ -66,23 +78,36 @@ arl_ma <- function(x, mu, sigma2, omega,
 }
 
 
-#' Average Length Run for Exponentially Weighted Moving Average
+#' Calibration parameters for EWMA quality control charts
 #'
-#' @param x
-#' @param mu
-#' @param sigma2
-#' @param L
-#' @param omega
-#' @param max.arl
-#' @param arl
-#' @param nboot
-#' @param ncores
-#' @param seed
+#' This function produces a data frame for the calibration of Exponential 
+#' Weighted Moving Average charts, which includes the control limit factor \code{L}, Average Run Length \code{ARL}, 
+#' and either the False Positive rate (when the process is in control) 
+#' or the True Negative rate (when the process is out of control).
+#' 
+#' @param x A numeric vector containing the data points for which to calculate the EWMA.
+#' @param mu double; target mean.
+#' @param sigma2 double: variance of the EWMA statistic.
+#' @param L integer: the control limit factor; represents the width of the control limits in terms of multiples of the standard deviation.
+#'          In EWMA charts, control limits are set based on the standard deviation of the EWMA statistic, which incorporates the smoothing constant 
+#'          \code{lambda}. \code{L} determines how wide the control limits are set from the center line.
+#' @param lambda A numeric value between 0 and 1 inclusive that indicates the smoothing constant of EWMA charts.
+#' @param max.arl integer; Maximum Average Run Length.
+#' @param arl integer; Average Run Length.
+#' @param scenario A logical evaluating to TRUE or FALSE indicating whether the process is under control \code{scenario} = 0, or the process out of control \code{scenario} = 1.
+#' @param nboot integer; Number of iterations to calculate the MA statistics
+#' @param ncores integer; the number of CPU cores to use for parallel processing. 
+#' @param seed integer; to initialize the Random Number Generator to a known state.
 #'
-#' @return
+#' @return This function produces a data frame for calibration, 
+#' which includes the control limit factor \code{L}, Average Run Length \code{ARL}, 
+#' and either the False Positive rate (when the process is in control) 
+#' or the True Negative rate (when the process is out of control).
+#' 
 #' @export
 #'
-#' @examples
+#' @examples 
+
 arl_ewma <- function(x, mu, sigma2, lambda,
                      L = seq(1, 3, by = 0.25), 
                      max.arl = 10000, arl = 100,

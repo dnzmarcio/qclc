@@ -7,11 +7,18 @@
 ma_statistic(x, t, omega)
 }
 \arguments{
-\item{omega}{}
+\item{x}{A numeric vector}
+
+\item{t}{An integer vector}
+
+\item{omega}{An integer value}
 }
 \value{
-
+A vector of MA
 }
 \description{
 Moving Average statistic
+}
+\examples{
+ma_statistic(x = 1:50, t = 1:30, omega = 0.15)
 }

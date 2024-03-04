@@ -5,10 +5,14 @@ Version: 0.1
 Date: 2019-08-31
 Author: Marcio Augusto Diniz
 Maintainer: Marcio Augusto Diniz <marcio.diniz@cshs.org>
-Description: Build quality control limit charts
-License: GPL (>= 2)
+Description: Build quality control limit charts for under control and out of control processes.
+License: file LICENSE
 Imports: Rcpp (>= 1.0),
          foreach (>= 1.5),
          doParallel (>= 1.0)
 LinkingTo: Rcpp
-RoxygenNote: 7.1.1
+Encoding: UTF-8
+RoxygenNote: 7.2.3
+Suggests: 
+    testthat (>= 3.0.0)
+Config/testthat/edition: 3
