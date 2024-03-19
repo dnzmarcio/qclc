@@ -7,18 +7,20 @@
 ewma_statistic(x, t, lambda, x0)
 }
 \arguments{
-\item{x}{A numeric vector}
+\item{x}{A numeric vector containing the data points for which to calculate the Exponentially Weighted Moving Averages.}
 
-\item{t}{An integer vector}
+\item{t}{An integer vector; representing a sequence from 1 to 
+n, where n denotes the number of observations used in the Exponential 
+Weighted Moving Average.}
 
-\item{lambda}{A numeric value between 0 and 1 inclusive that indicates the smoothing constant of EWMA charts.
-It determines the weight given to recent data points. A smaller \(\lambda\) gives more weight to recent observations,
+\item{lambda}{A numeric value between 0 and 1 inclusive that indicates the weighting factor of EWMA charts.
+It determines the weight given to recent data points. A smaller \code{lambda} gives more weight to recent observations,
 making the chart more sensitive to shifts.}
 
-\item{x0}{numeric: target mean.}
+\item{x0}{double; process mean. Also known as the target mean or the average of the historical data.}
 }
 \value{
-A vector of EWMA
+A numeric vector of Exponential Weighted Moving average statistic.
 }
 \description{
 Exponentially Weighted Moving Average statistic

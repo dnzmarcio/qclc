@@ -1,18 +1,24 @@
 Package: qclc
 Type: Package
-Title: Quality Control Limits Charts
+Title: Quality Control Limit Charts
 Version: 0.1
 Date: 2019-08-31
-Author: Marcio Augusto Diniz
+Authors@R: c(person("Marcio", "Augusto Diniz", 
+                     email = "marcio.diniz@cshs.org", role = c("aut", "cre")), 
+             person("Karni", "Bedirian", 
+                     email = "kb3896@nyu.edu", role = c("aut")))
+Author: Marcio Augusto Diniz [aut, cre],
+  Karni Bedirian [aut]
 Maintainer: Marcio Augusto Diniz <marcio.diniz@cshs.org>
-Description: Build quality control limit charts for under control and out of control processes.
+Description: Control charts for Moving Average (MA) and Exponentially Weighted Moving Average (EWMA), supporting the monitoring of both in-control and out-of-control processes.
 License: file LICENSE
-Imports: Rcpp (>= 1.0),
-         foreach (>= 1.5),
-         doParallel (>= 1.0)
+Imports: 
+    Rcpp (>= 1.0),
+    foreach (>= 1.5),
+    doParallel (>= 1.0),
+    roxygen2 (>= 7.2.3)
 LinkingTo: Rcpp
 Encoding: UTF-8
-RoxygenNote: 7.2.3
 Suggests: 
-    testthat (>= 3.0.0)
-Config/testthat/edition: 3
+    roxygen2
+RoxygenNote: 7.2.3

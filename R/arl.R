@@ -7,10 +7,10 @@
 #' (when the process is out of control).
 #'
 #' @param x A numeric vector containing the data points for which to calculate the MA.
-#' @param mu double; target mean.
-#' @param sigma2 double; variance of the MA statistic.
+#' @param mu double; process mean. Also known as the target mean or the average of the historical data.
+#' @param sigma2 double: estimate of the process variance.
 #' @param L integer: the control limit factor; represents the width of the control limits in terms of multiples of the standard deviation.
-#' @param omega An integer
+#' @param omega integer; the weighting factor of MA charts.
 #' @param max.arl integer; Maximum Average Run Length.
 #' @param arl integer; Average Run Length.
 #' @param scenario A logical evaluating to TRUE or FALSE indicating whether the process is under control \code{scenario} = 0, or the process out of control \code{scenario} = 1.
@@ -86,12 +86,12 @@ arl_ma <- function(x, mu, sigma2, omega,
 #' or the True Negative rate (when the process is out of control).
 #' 
 #' @param x A numeric vector containing the data points for which to calculate the EWMA.
-#' @param mu double; target mean.
-#' @param sigma2 double: variance of the EWMA statistic.
+#' @param mu double; process mean. Also known as the target mean or the average of the historical data.
+#' @param sigma2 double: estimate of the process variance.
 #' @param L integer: the control limit factor; represents the width of the control limits in terms of multiples of the standard deviation.
 #'          In EWMA charts, control limits are set based on the standard deviation of the EWMA statistic, which incorporates the smoothing constant 
 #'          \code{lambda}. \code{L} determines how wide the control limits are set from the center line.
-#' @param lambda A numeric value between 0 and 1 inclusive that indicates the smoothing constant of EWMA charts.
+#' @param lambda A numeric value between 0 and 1 inclusive that indicates the weighting factor of EWMA charts.
 #' @param max.arl integer; Maximum Average Run Length.
 #' @param arl integer; Average Run Length.
 #' @param scenario A logical evaluating to TRUE or FALSE indicating whether the process is under control \code{scenario} = 0, or the process out of control \code{scenario} = 1.
@@ -156,3 +156,5 @@ arl_ewma <- function(x, mu, sigma2, lambda,
   
   return(arl.tab)
 }
+
+

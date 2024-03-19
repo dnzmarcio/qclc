@@ -8,14 +8,13 @@ lower_limit_ma(t, omega, mu, sigma2, L)
 }
 \arguments{
 \item{t}{An integer vector; representing a sequence from 1 to 
-n, where n denotes the sample size used for calculating the Moving Average 
-(MA) statistic.}
+n, where n denotes the number of observations used in the Moving Average.}
 
-\item{omega}{An integer value}
+\item{omega}{integer; the weighting factor of MA charts.}
 
-\item{mu}{double; target mean.}
+\item{mu}{double; process mean. Also known as the target mean or the average of the historical data.}
 
-\item{sigma2}{double: variance of the Moving Average statistic.}
+\item{sigma2}{double: estimate of the process variance.}
 
 \item{L}{integer: the control limit factor; represents the width of the control 
 limits in terms of multiples of the standard deviation.}

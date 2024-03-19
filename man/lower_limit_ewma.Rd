@@ -8,8 +8,8 @@ lower_limit_ewma(t, mu, sigma2, L)
 }
 \arguments{
 \item{t}{An integer vector; representing a sequence from 1 to 
-n, where n denotes the sample size used for calculating the Exponentially 
-Weighted Moving Average (EWMA) statistic.}
+n, where n denotes the number of observations used in the Exponential 
+Weighted Moving Average.}
 
 \item{mu}{double; target mean.}
 

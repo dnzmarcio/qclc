@@ -21,11 +21,11 @@ arl_ewma(
 \arguments{
 \item{x}{A numeric vector containing the data points for which to calculate the EWMA.}
 
-\item{mu}{double; target mean.}
+\item{mu}{double; process mean. Also known as the target mean or the average of the historical data.}
 
-\item{sigma2}{double: variance of the EWMA statistic.}
+\item{sigma2}{double: estimate of the process variance.}
 
-\item{lambda}{A numeric value between 0 and 1 inclusive that indicates the smoothing constant of EWMA charts.}
+\item{lambda}{A numeric value between 0 and 1 inclusive that indicates the weighting factor of EWMA charts.}
 
 \item{L}{integer: the control limit factor; represents the width of the control limits in terms of multiples of the standard deviation.
 In EWMA charts, control limits are set based on the standard deviation of the EWMA statistic, which incorporates the smoothing constant 

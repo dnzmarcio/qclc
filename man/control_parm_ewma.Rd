@@ -10,7 +10,7 @@ control_parm_ewma(x, lambda, max.arl)
 \item{x}{A numeric vector containing the data points for which to calculate the EWMA.}
 
 \item{lambda}{A numeric value between 0 and 1 inclusive that indicates the smoothing constant of EWMA charts.
-It determines the weight given to recent data points. A smaller \(\lambda\) gives more weight to recent observations,
+It determines the weight given to recent data points. A smaller \code{lambda} gives more weight to recent observations,
 making the chart more sensitive to shifts.}
 
 \item{max.arl}{integer; Maximum Average Run Length.}
@@ -19,7 +19,7 @@ making the chart more sensitive to shifts.}
 Returns mean and variance of the sample
 }
 \description{
-Returns a list of values containing the target mean of the sample and the 
-variance of the Exponential Weighted Moving Average when the process is 
+Returns a list of values containing the process mean, the 
+estimated variance of the Exponential Weighted Moving Average when the process is 
 under control, and the value of lambda.
 }

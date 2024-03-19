@@ -7,14 +7,16 @@
 ma_statistic(x, t, omega)
 }
 \arguments{
-\item{x}{A numeric vector}
+\item{x}{A numeric vector containing the data points for which to calculate the Moving Averages.}
 
-\item{t}{An integer vector}
+\item{t}{An integer vector; representing a sequence from 1 to 
+n, where n denotes the number of observations used in the Exponential 
+Weighted Moving Average.}
 
-\item{omega}{An integer value}
+\item{omega}{integer; the weighting factor of MA charts.}
 }
 \value{
-A vector of MA
+A numeric vector of Moving average statistic.
 }
 \description{
 Moving Average statistic

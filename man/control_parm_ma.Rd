@@ -9,12 +9,12 @@ control_parm_ma(x, omega)
 \arguments{
 \item{x}{A numeric vector containing the data points for which to calculate the MA.}
 
-\item{omega}{An integer}
+\item{omega}{integer; the weighting factor of MA charts.}
 }
 \value{
 Returns mean and variance of the sample
 }
 \description{
-Returns a list of values containing the target mean of the sample, the variance of 
+Returns a list of values containing the process mean, the estimated variance of 
 the Moving Average when the process is under control, and the value of omega.
 }

@@ -2,11 +2,11 @@
 
 #' Control parameters for the Moving Average 
 #' 
-#' Returns a list of values containing the target mean of the sample, the variance of 
+#' Returns a list of values containing the process mean, the estimated variance of 
 #' the Moving Average when the process is under control, and the value of omega.
 #'
 #' @param x A numeric vector containing the data points for which to calculate the MA.
-#' @param omega An integer
+#' @param omega integer; the weighting factor of MA charts.
 #'
 #' @return Returns mean and variance of the sample
 #'
@@ -21,22 +21,22 @@ control_parm_ma <- function(x, omega){
     n <- 1
   }
   
-  mu <- mean(x)
+  mu <- mean(x, na.rm = TRUE)
   
-  sigma2 <- ifelse(t >= omega, var(x)/(n*omega), var(x)/(n*t))
+  sigma2 <- ifelse(t >= omega, var(x, na.rm = TRUE)/(n*omega), var(x, na.rm = TRUE)/(n*t))
   out <- list(mu = mu, sigma2 = sigma2, omega = omega)
   return(out)
 }
 
 #' Control parameters for the Exponential Weighted Moving Average 
 #' 
-#' Returns a list of values containing the target mean of the sample and the 
-#' variance of the Exponential Weighted Moving Average when the process is 
+#' Returns a list of values containing the process mean, the 
+#' estimated variance of the Exponential Weighted Moving Average when the process is 
 #' under control, and the value of lambda.
 #'
 #' @param x A numeric vector containing the data points for which to calculate the EWMA.
 #' @param lambda A numeric value between 0 and 1 inclusive that indicates the smoothing constant of EWMA charts.
-#'               It determines the weight given to recent data points. A smaller \(\lambda\) gives more weight to recent observations,
+#'               It determines the weight given to recent data points. A smaller \code{lambda} gives more weight to recent observations,
 #'               making the chart more sensitive to shifts.
 #' @param max.arl integer; Maximum Average Run Length.
 #'
@@ -52,8 +52,8 @@ control_parm_ewma <- function(x, lambda, max.arl){
     n <- 1
   }
   
-  mu <- mean(x)
-  sigma2 <- (var(x)/n)*(lambda/(2 - lambda))*(1 - (1 - lambda)^(2*(1:max.arl)))
+  mu <- mean(x, na.rm = TRUE)
+  sigma2 <- (var(x, na.rm = TRUE)/n)*(lambda/(2 - lambda))*(1 - (1 - lambda)^(2*(1:max.arl)))
   
   out <- list(mu = mu, sigma2 = sigma2, lambda = lambda)
 }

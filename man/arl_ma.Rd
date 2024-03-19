@@ -21,11 +21,11 @@ arl_ma(
 \arguments{
 \item{x}{A numeric vector containing the data points for which to calculate the MA.}
 
-\item{mu}{double; target mean.}
+\item{mu}{double; process mean. Also known as the target mean or the average of the historical data.}
 
-\item{sigma2}{double; variance of the MA statistic.}
+\item{sigma2}{double: estimate of the process variance.}
 
-\item{omega}{An integer}
+\item{omega}{integer; the weighting factor of MA charts.}
 
 \item{L}{integer: the control limit factor; represents the width of the control limits in terms of multiples of the standard deviation.}
 
