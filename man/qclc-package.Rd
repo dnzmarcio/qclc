@@ -1,22 +1,22 @@
-\name{qclc}
+\name{qclc-package}
+\alias{qclc-package}
 \alias{qclc}
 \docType{package}
 \title{
-  Quality Control Limit Charts
+  A short title line describing what the package does
 }
 \description{
-  Control charts for Moving Average (MA) and Exponentially Weighted Moving Average (EWMA), supporting the monitoring of both in-control and out-of-control processes.
+  A more detailed description of what the package does. A length
+  of about one to five lines is recommended.
 }
 \details{
   This section should provide a more detailed overview of how to use the
   package, including the most important functions.
 }
 \author{
+Your Name, email optional.
 
-Author: Marcio Augusto Diniz <marcio.diniz@cshs.org>
-        Karni Bedirian <kb3896@nyu.edu>
-
-Maintainer: Marcio Augusto Diniz <marcio.diniz@cshs.org>
+Maintainer: Your Name <your@email.com>
 }
 \references{
   This optional section can contain literature or other references for
