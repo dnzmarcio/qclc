@@ -2,24 +2,41 @@
 % Please edit documentation in R/control_parameters.R
 \name{control_parm_ewma}
 \alias{control_parm_ewma}
-\title{Control parameters for the Exponential Weighted Moving Average}
+\title{Control parameters for the Exponential Weighted Moving Average (EWMA)}
 \usage{
 control_parm_ewma(x, lambda, max.arl)
 }
 \arguments{
-\item{x}{A numeric vector containing the data points for which to calculate the EWMA.}
+\item{x}{A numeric vector containing individual observations obtained from the process.}
 
 \item{lambda}{A numeric value between 0 and 1 inclusive that indicates the smoothing constant of EWMA charts.
 It determines the weight given to recent data points. A smaller \code{lambda} gives more weight to recent observations,
 making the chart more sensitive to shifts.}
 
-\item{max.arl}{integer; Maximum Average Run Length.}
+\item{max.arl}{integer; Maximum Run Length. It refers to the maximum number of 
+consecutive observations that can happen before an alarm, 
+signaling a deviation in the monitored process. \code{max.arl} is denoted by \code{i} in the formula
+of the EWMA variance. See Details for more information.}
 }
 \value{
-Returns mean and variance of the sample
+A list containing the Process Mean \code{mu}, the variance of EWMA statistic \code{sigma2} 
+and the weighting factor \code{lambda}.
 }
 \description{
-Returns a list of values containing the process mean, the 
-estimated variance of the Exponential Weighted Moving Average when the process is 
-under control, and the value of lambda.
+\code{control_parm_ewma} computes the essential parameters required for EWMA statistic calculation. 
+It includes the process mean, the variance of EWMA statistic
+when the process is in control, and the value of weighting factor \code{lambda}.
+}
+\details{
+The variance of the EWMA statistic \code{sigma2} is calculated using the formula:
+\deqn{\sigma^2(Z_i) = \left[(1-(1-\lambda)^{2i})\frac{{\lambda}}{{2-\lambda}}\right]\sigma^2_X}
+The Process Mean \code{mu} is the average of the individual observations obtained from \code{X}.
+\deqn{\bar{X} = \frac{\sum_{j=0}^{n}X_i}{n}}
+}
+\examples{
+X <- rnorm(100)
+lambda <- 0.2
+max.arl <- 500
+control_parm_ewma(x = X, lambda, max.arl)
+
 }

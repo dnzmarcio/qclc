@@ -2,19 +2,27 @@
 % Please edit documentation in R/control_parameters.R
 \name{control_parm_ma}
 \alias{control_parm_ma}
-\title{Control parameters for the Moving Average}
+\title{Control parameters for the Moving Average (MA)}
 \usage{
 control_parm_ma(x, omega)
 }
 \arguments{
-\item{x}{A numeric vector containing the data points for which to calculate the MA.}
+\item{x}{A numeric vector containing individual observations obtained from the process.}
 
 \item{omega}{integer; the weighting factor of MA charts.}
 }
 \value{
-Returns mean and variance of the sample
+A list containing the Process Mean \code{mu}, the variance of MA statistic \code{sigma2} 
+and the weighting factor \code{omega}.
 }
 \description{
-Returns a list of values containing the process mean, the estimated variance of 
-the Moving Average when the process is under control, and the value of omega.
+\code{control_parm_ma} computes the essential parameters required for EWMA statistic calculation. 
+It includes the process mean, the variance of MA statistic
+when the process is in control, and the value of weighting factor \code{omega}.
+}
+\examples{
+x <- rnorm(100)
+omega <- 10
+control_parm_ma(x, omega)
+
 }
