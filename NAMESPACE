@@ -1,4 +1,3 @@
-#useDynLib(qclc, .registration=TRUE)
 importFrom(doParallel,registerDoParallel)
 importFrom(doParallel,stopImplicitCluster)
 importFrom(foreach,"%dopar%")
