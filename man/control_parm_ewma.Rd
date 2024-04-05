@@ -30,8 +30,8 @@ when the process is in control, and the value of weighting factor \code{lambda}.
 \details{
 The variance of the EWMA statistic \code{sigma2} is calculated using the formula:
 \deqn{\sigma^2(Z_i) = \left[(1-(1-\lambda)^{2i})\frac{{\lambda}}{{2-\lambda}}\right]\sigma^2_X}
-The Process Mean \code{mu} is the average of the individual observations obtained from \code{X}.
-\deqn{\bar{X} = \frac{\sum_{j=0}^{n}X_i}{n}}
+The Process Mean \code{mu} is the average of the individual observations obtained from \code{X}:
+\deqn{\bar{X} = \frac{\sum_{j=0}^{n}X_j}{n}}
 }
 \examples{
 X <- rnorm(100)

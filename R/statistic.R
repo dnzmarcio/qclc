@@ -15,8 +15,21 @@
 #'
 #' @examples ewma_statistic(x = 1:50, t = 1:30, lambda = 0.15, x0 = 2)
 ewma_statistic <- function(x, t, lambda, x0) {
-  ewma_statistic_C(x, t, lambda, x0)
+  
+  n = length(t)
+  Z = c()
+  
+  for (i in 1:n) {
+    sum_term <- 0
+    for (j in 0:(i - 1)) {
+      sum_term <- sum_term + (1 - lambda)^j * x[i - j]
+    }
+    Z <- c(Z, lambda * sum_term + (1 - lambda)^i * x0)
+  }
+  
+  return(Z)
 }
+
 
 #' Moving Average statistic
 #'
@@ -31,6 +44,25 @@ ewma_statistic <- function(x, t, lambda, x0) {
 #'
 #' @examples ma_statistic(x = 1:50, t = 1:30, omega = 0.15)
 ma_statistic <- function(x, t, omega) {
-  ma_statistic_C(x, t, omega)
+  n <- length(t)
+  out <- c()
+  
+  for (i in 1:n) {
+    z <- 0
+    
+    if (t[i] >= omega) {
+      for (j in (t[i] - omega + 1):t[i]) {
+        z <- z + x[j] / omega
+      }
+    } else {
+      for (j in 1:t[i]) {
+        z <- z + x[j] / t[i]
+      }
+    }
+    
+    out <- c(out, z)
+  }
+  
+  return(out)
 }
 

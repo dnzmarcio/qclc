@@ -13,11 +13,9 @@ Maintainer: Marcio Augusto Diniz <marcio.diniz@cshs.org>
 Description: Control charts for Moving Average (MA) and Exponentially Weighted Moving Average (EWMA), supporting the monitoring of both in-control and out-of-control processes.
 License: file LICENSE
 Imports: 
-    Rcpp (>= 1.0),
     foreach (>= 1.5),
     doParallel (>= 1.0),
     roxygen2 (>= 7.2.3)
-LinkingTo: Rcpp
 Encoding: UTF-8
 Suggests: 
     roxygen2
