@@ -48,7 +48,7 @@ arl_ma <- function(x, mu, sigma2, omega,
     set.seed(seed)
     arl.temp <- foreach (j = 1:nboot, .combine = `c`) %dopar% {
                            x.boot <- sample(x, size = max.arl, replace = TRUE)
-                           statistic <- ma_statistic_C(x = x.boot, t = 1:max.arl, omega = omega)
+                           statistic <- ma_statistic(x = x.boot, t = 1:max.arl, omega = omega)
                            
                            aux <- which(statistic < lower | statistic > upper)[1]
                            
@@ -128,7 +128,7 @@ arl_ewma <- function(x, mu, sigma2, lambda,
     set.seed(seed)
     arl.temp <- foreach (j = 1:nboot, .combine = `c`) %dopar% {
                            x.boot <- sample(x, size = max.arl, replace = TRUE)
-                           statistic <- ewma_statistic_C(x = x.boot, t = 1:max.arl, lambda = lambda, x0 = mu)
+                           statistic <- ewma_statistic(x = x.boot, t = 1:max.arl, lambda = lambda, x0 = mu)
                            
                            aux <- which(statistic < lower | statistic > upper)[1]
                            
