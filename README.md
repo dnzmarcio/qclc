@@ -40,7 +40,7 @@ Where:
 The **Upper Control Limit** for EWMA is given by: 
 
 $$
-\UCL(Z_i) = Z_0 + \L \sigma^2(Z_i)
+UCL(Z_i) = Z_0 + L \sigma^2(Z_i)
 $$
 
 Where:
