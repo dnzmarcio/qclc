@@ -4,7 +4,7 @@
 \alias{control_parm_ewma}
 \title{Control parameters for the Exponential Weighted Moving Average (EWMA)}
 \usage{
-control_parm_ewma(x, lambda, max.arl)
+control_parm_ewma(x, lambda, max.rl)
 }
 \arguments{
 \item{x}{A numeric vector containing individual observations obtained from the process.}
@@ -13,9 +13,9 @@ control_parm_ewma(x, lambda, max.arl)
 It determines the weight given to recent data points. A smaller \code{lambda} gives more weight to recent observations,
 making the chart more sensitive to shifts.}
 
-\item{max.arl}{integer; Maximum Run Length. It refers to the maximum number of 
+\item{max.rl}{integer; Maximum Run Length. It refers to the maximum number of 
 consecutive observations that can happen before an alarm, 
-signaling a deviation in the monitored process. \code{max.arl} is denoted by \code{i} in the formula
+signaling a deviation in the monitored process. \code{max.rl} is denoted by \code{i} in the formula
 of the EWMA variance. See Details for more information.}
 }
 \value{
@@ -36,7 +36,7 @@ The Process Mean \code{mu} is the average of the individual observations obtaine
 \examples{
 X <- rnorm(100)
 lambda <- 0.2
-max.arl <- 500
-control_parm_ewma(x = X, lambda, max.arl)
+max.rl <- 500
+control_parm_ewma(x = X, lambda, max.rl)
 
 }

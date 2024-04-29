@@ -1,7 +1,8 @@
 
 #' Exponentially Weighted Moving Average statistic
 #'
-#' @param x A numeric vector containing the data points for which to calculate the Exponentially Weighted Moving Averages.
+#' @param x A numeric vector of individual observations obtained from the process.
+#' In some cases, \code{x} can also indicate sample averages according to a specified sampling plan.
 #' @param t An integer vector; representing a sequence from 1 to 
 #' n, where n denotes the number of observations used in the Exponential 
 #' Weighted Moving Average.
@@ -13,7 +14,9 @@
 #' @return A numeric vector of Exponential Weighted Moving average statistic.
 #' @export
 #'
-#' @examples ewma_statistic(x = 1:50, t = 1:30, lambda = 0.15, x0 = 2)
+#' @examples 
+#' x = rnorm(100)
+#' ewma_statistic(x, t = 1:length(x), lambda = 0.15, x0 = mean(x))
 ewma_statistic <- function(x, t, lambda, x0) {
   
   n = length(t)
@@ -33,16 +36,18 @@ ewma_statistic <- function(x, t, lambda, x0) {
 
 #' Moving Average statistic
 #'
-#' @param x A numeric vector containing the data points for which to calculate the Moving Averages.
+#' @param x A numeric vector of individual observations obtained from the process.
+#' In some cases, \code{x} can also indicate sample averages according to a specified sampling plan.
 #' @param t An integer vector; representing a sequence from 1 to 
-#' n, where n denotes the number of observations used in the Exponential 
-#' Weighted Moving Average.
+#' n, where n denotes the number of observations used in the Moving Average.
 #' @param omega integer; the weighting factor of MA charts.
 #'
 #' @return A numeric vector of Moving average statistic.
 #' @export
 #'
-#' @examples ma_statistic(x = 1:50, t = 1:30, omega = 0.15)
+#' @examples 
+#' x = rnorm(100)
+#' ma_statistic(x, t = 1:length(x), omega = 0.15)
 ma_statistic <- function(x, t, omega) {
   n <- length(t)
   out <- c()
