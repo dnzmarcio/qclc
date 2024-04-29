@@ -18,7 +18,6 @@ $$
 
 Where:
 
--  $Z_i$ is the EWMA statistic.
 -  $Z_0$ is the process mean.
 -  $Y$ is the individual observations obtained from the process.
 -  $\lambda$ is the weighting factor for EWMA.
@@ -33,7 +32,6 @@ $$
 
 Where:
 
--  $\sigma^2(Z_i)$ is the estimated variance of the EWMA statistic.
 -  $\sigma^2_Y$ is the variance of the original sample.
 -  $\lambda$ is the weighting factor for EWMA.
 
@@ -45,6 +43,18 @@ $$
 
 Where:
 
-- $Z_0$ is the process mean.
+- $Z_0$ is the process mean. 
+- $L$ is the Control Limit Factor.
+- $\sigma^2(Z_i)$ is the estimate of the process Variance.
+
+The **Lower Control Limit** for EWMA is given by: 
+
+$$
+LCL(Z_i) = Z_0 - L \sigma^2(Z_i)
+$$
+
+Where:
+
+- $Z_0$ is the process mean. 
 - $L$ is the Control Limit Factor.
 - $\sigma^2(Z_i)$ is the estimate of the process Variance.
