@@ -111,9 +111,9 @@ arl_ma <- function(x, mu, sigma2, omega,
   stopImplicitCluster()
   
   if (scenario == 0){
-    colnames(rl.tab) <- c("L", "Arl0", paste0("FP_", rl))
+    colnames(rl.tab) <- c("L", "Arl0", paste0("FP_", rl), "nboot")
   } else {
-    colnames(rl.tab) <- c("L", "arl1", paste0("TP_", rl))
+    colnames(rl.tab) <- c("L", "arl1", paste0("TP_", rl), "nboot")
   }
   
   return(rl.tab)
@@ -234,9 +234,9 @@ arl_ewma <- function(x, mu, sigma2, lambda,
   stopImplicitCluster()
   
   if (scenario == 0){
-    colnames(rl.tab) <- c("L", "Arl0", paste0("FP_", rl))
+    colnames(rl.tab) <- c("L", "Arl0", paste0("FP_", rl), "nboot")
   } else {
-    colnames(rl.tab) <- c("L", "Arl1", paste0("TP_", rl))
+    colnames(rl.tab) <- c("L", "Arl1", paste0("TP_", rl), "nboot")
   }
   
   return(rl.tab)

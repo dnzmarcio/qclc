@@ -51,9 +51,43 @@ devtools::install_github("dnzmarcio/qclc", dependencies = TRUE, ref = "dev")
 ```
 
 ## Usage
+``` r
+## Moving Averages
+
+### Calculating Process Mean and Variance
+x <- rnorm(100)
+omega <- 10
+aux <- control_parm_ma(x, omega)
+aux
+
+### Calibration
+#### process under control
+max.rl = 110
+arl_ma(x, mu = aux$mu, aux$sigma2, omega = aux$omega, 
+        L = seq(1, 3, by = 0.25), 
+        max.rl = 110, rl = 100, 
+        scenario = 0, nboot = 100, 
+        ncores = 1, seed = 1234)
+        
+#### process out of control 
+x.shift = x + 0.5*(sqrt(var(x)))
+arl_ma(x.shift, mu = aux$mu, aux$sigma2, omega, 
+        L = seq(1, 3, by = 0.25), 
+        max.rl = 110, rl = 100, 
+        scenario = 1, nboot = 100, 
+        ncores = 1, seed = 1234)
+        
+
+### Moving Average Statistic
+ma_statistic(x, t = 1:length(x), omega = 10)
+
+### Control Limits for MA
+lower_limit_ma(t = 1:length(x), omega =10, mu = aux$mu, sigma2 = aux$sigma2, L = 3)
+upper_limit_ma(t = 1:length(x), omega =10, mu = aux$mu, sigma2 = aux$sigma2, L = 3)
+```
 
 ## Integration in Shiny
 
-The features of the qclc package have been incorporated into an R Shiny application, which is available for viewing and can be download from [R Shiny](https://github.com/KHBHH/RShiny_qclc).
+The features of the **qclc** package have been incorporated into an R Shiny application, which is available for viewing and can be download from [R Shiny](https://github.com/KHBHH/RShiny_qclc).
 
 ## References

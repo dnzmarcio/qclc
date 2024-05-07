@@ -14,8 +14,7 @@ Description: Quality Control Limit Charts for Moving Average (MA) and Exponentia
 License: file LICENSE
 Imports: 
     foreach (>= 1.5),
-    doParallel (>= 1.0),
-    roxygen2 (>= 7.2.3)
+    doParallel (>= 1.0)
 Encoding: UTF-8
 Suggests: 
     roxygen2
