@@ -44,7 +44,6 @@ x <- rnorm(100)
 omega <- 10
 control_parm_ma(x, omega)
 
-
 }
 \seealso{
 \code{\link{arl_ma}}, \code{\link{ma_statistic}},

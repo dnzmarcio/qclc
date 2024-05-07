@@ -15,7 +15,6 @@
 #'   \item \code{omega}: the weighting factor of MA charts.
 #' }
 #' 
-#' @export
 #'
 #' @details
 #' The Variance of the MA statistic \code{sigma2} is given by: 
@@ -34,12 +33,13 @@
 #' @seealso \code{\link{arl_ma}}, \code{\link{ma_statistic}},
 #' \code{\link{lower_limit_ma}}, \code{\link{upper_limit_ma}}  
 #' 
+#' @import stats
 #' @examples
 #' x <- rnorm(100)
 #' omega <- 10
 #' control_parm_ma(x, omega)
 #'
-#'
+#' @export
 control_parm_ma <- function(x, omega){
   
   t <- 1:omega
@@ -81,7 +81,6 @@ control_parm_ma <- function(x, omega){
 #'   \item \code{lambda}: the weighting factor of EWMA charts.
 #' }
 #' 
-#' @export
 #' 
 #' @details The variance of the EWMA statistic \code{sigma2} is given by:
 #' \deqn{\sigma^2(Z_i) = \left[(1-(1-\lambda)^{2i})\frac{{\lambda}}{{2-\lambda}}\right]\sigma^2_X}
@@ -91,12 +90,15 @@ control_parm_ma <- function(x, omega){
 #' @seealso \code{\link{arl_ewma}}, \code{\link{ewma_statistic}},
 #' \code{\link{lower_limit_ewma}}, \code{\link{upper_limit_ewma}}  
 #' 
+#' @import stats
+#' 
 #' @examples
 #' x <- rnorm(100)
 #' lambda <- 0.2
 #' max.rl <- 500
 #' control_parm_ewma(x, lambda, max.rl)
 #'
+#' @export
 
 control_parm_ewma <- function(x, lambda, max.rl){
   

@@ -19,7 +19,6 @@
 #' See Details for more information.
 #'
 #' @return A numeric vector of Exponential Weighted Moving average statistic.
-#' @export
 #' 
 #' @details
 #' The EWMA statistic is given by:
@@ -33,6 +32,7 @@
 #' ewma_values <- ewma_statistic(x, t = 1:length(x), lambda = 0.15, x0 = mean(x))
 #' print(ewma_values)
 #' 
+#' @export
 ewma_statistic <- function(x, t, lambda, x0) {
   
   n = length(t)
@@ -62,7 +62,7 @@ ewma_statistic <- function(x, t, lambda, x0) {
 #' @param omega integer; the weighting factor of MA charts, also known as the window size.
 #'
 #' @return A numeric vector of Moving average statistics.
-#' @export
+#' 
 #'
 #' @details
 #' The moving average statistic is given by:
@@ -85,6 +85,7 @@ ewma_statistic <- function(x, t, lambda, x0) {
 #' ma_values <- ma_statistic(x, t = 1:length(x), omega = 10)
 #' print(ma_values)
 #' 
+#' @export
 ma_statistic <- function(x, t, omega) {
   n <- length(t)
   out <- c()

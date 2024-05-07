@@ -2,6 +2,8 @@
 
 An [R](https://www.r-project.org/) package to generate the Operating Characteristics of ordinary Moving Average (MA) and Exponentially Weighted Moving Average (EWMA) quality control limit charts; supporting the monitoring of both in-control and out-of-control processes.
 
+## Table of Contents 
+
 [Introduction](#introduction)<br>
 [Functions](functions)<br>
 [Installtion Instructions](#installation-instructions)<br>
@@ -52,6 +54,8 @@ devtools::install_github("dnzmarcio/qclc", dependencies = TRUE, ref = "dev")
 
 ## Usage
 ``` r
+library(qclc)
+
 ## Moving Averages
 
 ### Calculating Process Mean and Variance

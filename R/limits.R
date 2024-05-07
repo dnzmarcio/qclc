@@ -11,7 +11,6 @@
 #' the control limits in terms of multiples of the standard deviation.  
 #'
 #' @return A numeric vector of the MA Lower Control Limit.
-#' @export
 #' 
 #' @details
 #' The choice of \code{L} affects the chart's ability to detect process shifts; 
@@ -27,6 +26,7 @@
 #' aux = control_parm_ma(x, omega = 10)
 #' lower_limit_ma(t = 1:length(x), omega =10, mu = aux$mu, sigma2 = aux$sigma2, L = 3)
 #' 
+#' @export
 lower_limit_ma <- function(t, omega, mu, sigma2, L){
   temp <- ifelse(t < omega, sigma2[t], sigma2[length(sigma2)])
   out <- mu - L*sqrt(temp)
@@ -46,7 +46,6 @@ lower_limit_ma <- function(t, omega, mu, sigma2, L){
 #' the control limits in terms of multiples of the standard deviation.
 #'
 #' @return A numeric vector of the MA Upper Control Limits.
-#' @export
 #'
 #' @details
 #' The choice of \code{L} affects the chart's ability to detect process shifts; 
@@ -62,6 +61,7 @@ lower_limit_ma <- function(t, omega, mu, sigma2, L){
 #' aux = control_parm_ma(x, omega = 10)
 #' upper_limit_ma(t = 1:length(x), omega =10, mu = aux$mu, sigma2 = aux$sigma2, L = 3)
 #'
+#' @export
 upper_limit_ma <- function(t, omega, mu, sigma2, L){
   temp <- ifelse(t < omega, sigma2[t], sigma2[length(sigma2)])
   out <- mu + L*sqrt(temp)
@@ -82,7 +82,6 @@ upper_limit_ma <- function(t, omega, mu, sigma2, L){
 #' the control limits in terms of multiples of the standard deviation.
 #' 
 #' @return A numeric vector of the EWMA Lower Control Limits.
-#' @export
 #' 
 #' @details
 #' The choice of \code{L} affects the chart's ability to detect process shifts; 
@@ -100,6 +99,7 @@ upper_limit_ma <- function(t, omega, mu, sigma2, L){
 #' lower_limit_ewma(t = 1:length(x), mu = aux$mu, 
 #' sigma2 = aux$sigma2, L = 3)
 #' 
+#' @export
 lower_limit_ewma <- function(t, mu, sigma2, L){
   out <- mu - L*sqrt(sigma2[1:length(t)])
   return(out)
@@ -120,7 +120,6 @@ lower_limit_ewma <- function(t, mu, sigma2, L){
 #' the control limits in terms of multiples of the standard deviation.
 #' 
 #' @return A numeric vector of the EWMA Upper Control Limits.
-#' @export
 #'
 #' @details
 #' The choice of \code{L} affects the chart's ability to detect process shifts; 
@@ -138,6 +137,7 @@ lower_limit_ewma <- function(t, mu, sigma2, L){
 #' upper_limit_ewma(t = 1:length(x), mu = aux$mu, 
 #' sigma2 = aux$sigma2, L = 3)
 #' 
+#' @export
 upper_limit_ewma <- function(t, mu, sigma2, L){
   out <-  mu + L*sqrt(sigma2[1:length(t)])
   return(out)
