@@ -7,20 +7,41 @@
 ma_statistic(x, t, omega)
 }
 \arguments{
-\item{x}{A numeric vector containing the data points for which to calculate the Moving Averages.}
+\item{x}{A numeric vector of individual observations obtained from the process.
+In some cases, \code{x} can also indicate sample averages according to a specified sampling plan.}
 
 \item{t}{An integer vector; representing a sequence from 1 to 
-n, where n denotes the number of observations used in the Exponential 
-Weighted Moving Average.}
+n, where n denotes the number of observations used in the Moving Average.}
 
-\item{omega}{integer; the weighting factor of MA charts.}
+\item{omega}{integer; the weighting factor of MA charts, also known as the window size.}
 }
 \value{
-A numeric vector of Moving average statistic.
+A numeric vector of Moving average statistics.
 }
 \description{
-Moving Average statistic
+\code{ma_statistic()} calculates moving averages for a provided time series vector, 
+using a defined window size.
+}
+\details{
+The moving average statistic is given by:
+\deqn{Z_i = \left\{
+\begin{array}{ll}
+\frac{1}{\omega} \sum_{j=t[i]-\omega+1}^{t[i]} x_j & t[i] \geq \omega \\\\
+\frac{1}{t[i]} \sum_{j=1}^{t[i]} x_j & t[i] < \omega
+\end{array}
+\right.}
+
+where \code{t[i]} is the observation index at time \code{i}, \eqn{\omega} is the weighting factor
+\code{omega}, also known as the window size, on which averages are calculated, 
+and \code{x_j} is the individual observation of the process \code{x} at time \code{j}.
 }
 \examples{
-ma_statistic(x = 1:50, t = 1:30, omega = 0.15)
+x = rnorm(100)
+ma_values <- ma_statistic(x, t = 1:length(x), omega = 10)
+print(ma_values)
+
+}
+\seealso{
+\code{\link{arl_ma}}, \code{\link{lower_limit_ma}}, 
+\code{\link{upper_limit_ma}}, \code{\link{ewma_statistic}}
 }

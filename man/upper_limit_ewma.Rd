@@ -2,30 +2,45 @@
 % Please edit documentation in R/limits.R
 \name{upper_limit_ewma}
 \alias{upper_limit_ewma}
-\title{Upper Control Limits (UCL) for Exponentially Weighted Moving Average}
+\title{Upper Control Limits for Exponentially Weighted Moving Average}
 \usage{
 upper_limit_ewma(t, mu, sigma2, L)
 }
 \arguments{
 \item{t}{An integer vector; representing a sequence from 1 to 
 n, where n denotes the number of observations used in the Exponential 
-Weighted Moving Average.}
+Weighted Moving Average. \code{t} is denoted by \code{i} in the UCL formula. 
+See Details for more information.}
 
-\item{mu}{double; target mean.}
+\item{mu}{double; process mean. Also known as the target mean or the average of the historical data.}
 
 \item{sigma2}{double: variance of the EWMA statistic.}
 
-\item{L}{integer: the control limit factor; represents the width of the control limits in terms of multiples of the standard deviation.
-In EWMA charts, control limits are set based on the standard deviation of the EWMA statistic, which incorporates the smoothing constant 
-\code{lambda}. \code{L} determines how wide the control limits are set from the center line.}
+\item{L}{A numeric value; the control limit factor. \code{L} represents the width of 
+the control limits in terms of multiples of the standard deviation.}
 }
 \value{
-EWMA Upper Limit
+A numeric vector of the EWMA Upper Control Limits.
 }
 \description{
-Upper Control Limits (UCL) for Exponentially Weighted Moving Average
+\code{upper_limit_ewma} is used to generate the Upper Control Limits for the EWMA 
+quality control charts.
+}
+\details{
+The choice of \code{L} affects the chart's ability to detect process shifts; 
+larger L values set wider control limits from the center line, reducing false alarms but also 
+potentially delaying the detection of real shifts.
+The UCL of the EWMA is given by:
+\deqn{UCL(Z_i) = Z_0 + L \sqrt{\sigma^2(Z_i)}}
 }
 \examples{
-upper_limit_ewma (t = 1:30, mu = 2, sigma2 = 4, L = 1)
+x = rnorm(100)
+aux = control_parm_ewma(x, lambda = 0.15, 
+max.rl = 500)
+upper_limit_ewma(t = 1:length(x), mu = aux$mu, 
+sigma2 = aux$sigma2, L = 3)
 
+}
+\seealso{
+\code{\link{control_parm_ewma}}, \code{\link{lower_limit_ewma}}
 }

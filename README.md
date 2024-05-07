@@ -1,60 +1,45 @@
 # qclc
-Build quality control limits chart
 
-[Theoretical Background](#theoretical-background)><br>
+An [R](https://www.r-project.org/) package to generate the Operating Characteristics of ordinary Moving Average (MA) and Exponentially Weighted Moving Average (EWMA) quality control limit charts. 
+
+[Overview](#overview)<br>
+[Functions](functions)<br>
+[Installtion Instructions](#installation-instructions)<br>
+[Usage](#usage)<br>
+[Integration in Shiny](#integration-in-shiny)<br>
+[References](#references)<br>
 
 
-### Theoretical Background
 
-#### Moving Average
+## Overview 
 
-#### Exponential Weighted Moving Average
 
-The **EWMA statistic** is given by: 
+## Functions
 
-$$
-Z_i = \lambda \sum_{j=0}^{i-1} (1-\lambda)Y_{i-j} + (1-\lambda)^i Z_0
-$$
+`control_parm_ma():` calculates the key parameters needed for the Operating Characteristics of MA quality control charts, including the process mean and the variance of the MA statistic when the process is stable.
 
-Where:
+`control_parm_ewma():` computes the essential parameters required for generating the Operating Characteristics of EWMA quality control charts. It includes the process mean and the variance of EWMA statistic when the process is in control.
 
--  $Z_0$ is the process mean.
--  $Y$ is the individual observations obtained from the process.
--  $\lambda$ is the weighting factor for EWMA.
+`arl_ma():` estimates the Operating Characteristics for the the MA.
 
-<br>
+`arl_ewma():` estimates the Operating Characteristics for the the EWMA.
 
-The **Estimate of the Process Variance** is given by:
+`ma_statistic():` calculates moving averages for a provided time series vector, 
+using a defined window size.
 
-$$
-\sigma^2(Z_i) = [(1-(1-\lambda)^{2i})\frac{{\lambda}}{{2-\lambda}}]\sigma^2_Y
-$$
+`ewma_statistic():` computes exponentially weighted moving averages for a given time series.
 
-Where:
+## Installtion Instructions
 
--  $\sigma^2_Y$ is the variance of the original sample.
--  $\lambda$ is the weighting factor for EWMA.
+You can install the development version of **qclc** from Github:
 
-The **Upper Control Limit** for EWMA is given by: 
+``` r
+# install.packages("devtools")
+devtools::install_github("dnzmarcio/qclc", dependencies = TRUE, ref = "dev")
+```
 
-$$
-UCL(Z_i) = Z_0 + L \sigma^2(Z_i)
-$$
+## Usage
 
-Where:
+## Integration in Shiny
 
-- $Z_0$ is the process mean. 
-- $L$ is the Control Limit Factor.
-- $\sigma^2(Z_i)$ is the estimate of the process Variance.
-
-The **Lower Control Limit** for EWMA is given by: 
-
-$$
-LCL(Z_i) = Z_0 - L \sigma^2(Z_i)
-$$
-
-Where:
-
-- $Z_0$ is the process mean. 
-- $L$ is the Control Limit Factor.
-- $\sigma^2(Z_i)$ is the estimate of the process Variance.
+## References

@@ -2,7 +2,7 @@
 % Please edit documentation in R/limits.R
 \name{lower_limit_ma}
 \alias{lower_limit_ma}
-\title{Lower Control Limits (LCL) for Moving Average}
+\title{Lower Control Limits for Moving Average}
 \usage{
 lower_limit_ma(t, omega, mu, sigma2, L)
 }
@@ -16,16 +16,28 @@ n, where n denotes the number of observations used in the Moving Average.}
 
 \item{sigma2}{double: estimate of the process variance.}
 
-\item{L}{integer: the control limit factor; represents the width of the control 
-limits in terms of multiples of the standard deviation.}
+\item{L}{A numeric value; the control limit factor. \code{L} represents the width of 
+the control limits in terms of multiples of the standard deviation.}
 }
 \value{
-MA Lower Limit
+A numeric vector of the MA Lower Control Limit.
 }
 \description{
-Lower Control Limits (LCL) for Moving Average
+This function generates the Lower Control Limits for the MA quality control charts.
+}
+\details{
+The choice of \code{L} affects the chart's ability to detect process shifts; 
+larger L values set wider control limits from the center line, reducing false alarms but also 
+potentially delaying the detection of real shifts.
+The LCL of ordinary Moving Average is given by: 
+\deqn{LCL(t) = \mu + L \sqrt{\sigma^2(t)}}
 }
 \examples{
-lower_limit_ma(t = 1:30, omega =10, mu = 2, sigma2 = 4, L = 1)
+x = rnorm(100)
+aux = control_parm_ma(x, omega = 10)
+lower_limit_ma(t = 1:length(x), omega =10, mu = aux$mu, sigma2 = aux$sigma2, L = 3)
 
+}
+\seealso{
+\code{\link{control_parm_ma}}, \code{\link{upper_limit_ma}}
 }

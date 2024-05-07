@@ -7,22 +7,46 @@
 control_parm_ma(x, omega)
 }
 \arguments{
-\item{x}{A numeric vector containing individual observations obtained from the process.}
+\item{x}{A numeric vector of individual observations obtained from the process.
+In some cases, \code{x} can also indicate sample averages according to a specified sampling plan.}
 
 \item{omega}{integer; the weighting factor of MA charts.}
 }
 \value{
-A list containing the Process Mean \code{mu}, the variance of MA statistic \code{sigma2} 
-and the weighting factor \code{omega}.
+A list containing the following components:
+\itemize{
+  \item \code{mu}: The process mean. Also known as the target mean or the average of the historical data \code{x}.
+  \item \code{sigma2}: The variance of MA statistic.
+  \item \code{omega}: the weighting factor of MA charts.
+}
 }
 \description{
-\code{control_parm_ma} computes the essential parameters required for EWMA statistic calculation. 
-It includes the process mean, the variance of MA statistic
-when the process is in control, and the value of weighting factor \code{omega}.
+\code{control_parm_ma} computes the essential parameters required for generating
+the Operating Characteristics of MA quality control charts. It includes the process 
+mean and the variance of MA statistic when the process is in control.
+}
+\details{
+The Variance of the MA statistic \code{sigma2} is given by: 
+\deqn{\sigma^2(t) = \left\{ 
+\begin{array}{ll} 
+\frac{\text{var}(x)}{n \cdot \omega} & t \geq \omega \\\\
+\frac{\text{var}(x)}{n \cdot t} & \text{otherwise}
+\end{array} 
+\right.}
+If \code{x} is provided as an input vector to \code{control_parm_ma()}, \code{n} is regarded as 1,
+else \code{n} indicates number of columns of a given matrix.
+
+The Process Mean \code{mu} is the average of the individual observations obtained from \code{X}:
+\deqn{\bar{X} = \frac{\sum_{j=0}^{n}X_j}{n}}
 }
 \examples{
 x <- rnorm(100)
 omega <- 10
 control_parm_ma(x, omega)
 
+
+}
+\seealso{
+\code{\link{arl_ma}}, \code{\link{ma_statistic}},
+\code{\link{lower_limit_ma}}, \code{\link{upper_limit_ma}}
 }

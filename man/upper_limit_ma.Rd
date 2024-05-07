@@ -2,7 +2,7 @@
 % Please edit documentation in R/limits.R
 \name{upper_limit_ma}
 \alias{upper_limit_ma}
-\title{Upper Control Limits (UCL) for Moving Average}
+\title{Upper Control Limits for Moving Average}
 \usage{
 upper_limit_ma(t, omega, mu, sigma2, L)
 }
@@ -10,22 +10,34 @@ upper_limit_ma(t, omega, mu, sigma2, L)
 \item{t}{An integer vector; representing a sequence from 1 to 
 n, where n denotes the number of observations used in the Moving Average.}
 
-\item{omega}{An integer value}
+\item{omega}{integer; the weighting factor of MA charts.}
 
 \item{mu}{double; process mean. Also known as the target mean or the average of the historical data.}
 
 \item{sigma2}{double: estimate of the process variance.}
 
-\item{L}{integer: the control limit factor; represents the width of the control 
-limits in terms of multiples of the standard deviation.}
+\item{L}{A numeric value; the control limit factor. \code{L} represents the width of 
+the control limits in terms of multiples of the standard deviation.}
 }
 \value{
-MA Upper Limit
+A numeric vector of the MA Upper Control Limits.
 }
 \description{
-Upper Control Limits (UCL) for Moving Average
+This function generates the Upper Control Limits for the MA quality control charts.
+}
+\details{
+The choice of \code{L} affects the chart's ability to detect process shifts; 
+larger L values set wider control limits from the center line, reducing false alarms but also 
+potentially delaying the detection of real shifts.
+The UCL of ordinary Moving Average is given by: 
+\deqn{UCL(t) = \mu + L \sqrt{\sigma^2(t)}}
 }
 \examples{
-upper_limit_ma(t = 1:30, omega =10, mu = 2, sigma2 = 4, L = 1)
+x = rnorm(100)
+aux = control_parm_ma(x, omega = 10)
+upper_limit_ma(t = 1:length(x), omega =10, mu = aux$mu, sigma2 = aux$sigma2, L = 3)
 
+}
+\seealso{
+\code{\link{control_parm_ma}}, \code{\link{upper_limit_ma}}
 }
