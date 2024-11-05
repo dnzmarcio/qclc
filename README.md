@@ -22,7 +22,7 @@ The **qclc** package serves as a statistical resource specifically tailored for 
 
 ## Functions
 
-`control_parm_ma():` calculates the  process mean and variance needed for the Operating Characteristics of MA.
+`control_parm_ma():` Computes the process mean and variance essential for determining the operating characteristics of a Moving Average (MA).
 
 `control_parm_ewma():` computes the process mean and variance required for generating the Operating Characteristics of EWMA.
 

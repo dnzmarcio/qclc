@@ -1,21 +1,26 @@
 Package: qclc
 Type: Package
-Title: Quality Control Limit Charts
+Title: Operating Characteristics for Moving Average (MA) and Exponential Weighted Moving Average (EWMA)
 Version: 0.1
 Date: 2019-08-31
 Authors@R: c(person("Marcio", "Augusto Diniz", 
                      email = "marcio.diniz@cshs.org", role = c("aut", "cre")), 
              person("Karni", "Bedirian", 
                      email = "kb3896@nyu.edu", role = c("aut")))
-Author: Marcio Augusto Diniz [aut, cre],
-  Karni Bedirian [aut]
 Maintainer: Marcio Augusto Diniz <marcio.diniz@cshs.org>
 Description: Quality Control Limit Charts for Moving Average (MA) and Exponentially Weighted Moving Average (EWMA), supporting the monitoring of both in-control and out-of-control processes.
 License: file LICENSE
 Imports: 
+    doParallel (>= 1.0),
+    doRNG (>= 1.8.6),
     foreach (>= 1.5),
-    doParallel (>= 1.0)
+    progress (>= 1.2.2),
+    rngtools (>= 1.5.2),
+    stats
 Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.2
 Suggests: 
-    roxygen2
-RoxygenNote: 7.3.1
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr

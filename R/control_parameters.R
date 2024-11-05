@@ -42,6 +42,10 @@
 #' @export
 control_parm_ma <- function(x, omega){
   
+  if (any(is.na(x))) {
+    stop("Input vector 'x' contains NA values. Please ensure all missing values are removed or replaced before using this function.")
+  }
+  
   t <- 1:omega
   
   if (is.matrix(x)){
@@ -101,6 +105,10 @@ control_parm_ma <- function(x, omega){
 #' @export
 
 control_parm_ewma <- function(x, lambda, max.rl){
+  
+  if (any(is.na(x))) {
+    stop("Input vector 'x' contains NA values. Please ensure all missing values are removed or replaced before using this function.")
+  }
   
   if (is.matrix(x)){
     n <- ncol(x)

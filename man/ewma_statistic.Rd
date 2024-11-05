@@ -10,25 +10,25 @@ ewma_statistic(x, t, lambda, x0)
 \item{x}{A numeric vector of individual observations obtained from the process.
 In some cases, \code{x} can also indicate sample averages according to a specified sampling plan.}
 
-\item{t}{An integer vector; representing a sequence from 1 to 
-n, where n denotes the number of observations used in the Exponential 
-Weighted Moving Average. \code{t} is denoted by \code{i} in the EWMA statistic formula. 
+\item{t}{An integer vector; representing a sequence from 1 to
+n, where n denotes the number of observations used in the Exponential
+Weighted Moving Average. \code{t} is denoted by \code{i} in the EWMA statistic formula.
 See Details for more information.}
 
 \item{lambda}{A numeric value between 0 and 1 inclusive that indicates the weighting factor of EWMA charts.
 It determines the weight given to recent data points. A smaller \code{lambda} gives more weight to recent observations,
 making the chart more sensitive to shifts.}
 
-\item{x0}{double; process mean. Also known as the target mean or the average of the 
-historical data. \code{x0} is denoted by \code{Z_0} in the EWMA statistic formula. 
+\item{x0}{double; process mean. Also known as the target mean or the average of the
+historical data. \code{x0} is denoted by \code{Z_0} in the EWMA statistic formula.
 See Details for more information.}
 }
 \value{
 A numeric vector of Exponential Weighted Moving average statistic.
 }
 \description{
-\code{ewma_statistic()} computes exponentially weighted moving averages for a given 
-time series, assigning greater importance to recent observations while still considering 
+\code{ewma_statistic()} computes exponentially weighted moving averages for a given
+time series, assigning greater importance to recent observations while still considering
 older data points.
 }
 \details{
@@ -42,6 +42,6 @@ print(ewma_values)
 
 }
 \seealso{
-\code{\link{arl_ewma}}, \code{\link{lower_limit_ewma}}, 
+\code{\link{arl_ewma}}, \code{\link{lower_limit_ewma}},
 \code{\link{upper_limit_ewma}}, \code{\link{ma_statistic}}
 }

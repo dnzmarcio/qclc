@@ -1,0 +1,122 @@
+---
+title: "qclc-guide"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{qclc-guide}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+## Workflow Overview for MA and EWMA Analysis
+
+This workflow demonstrates the process for conducting quality control chart analysis using Moving Average (MA) and Exponentially Weighted Moving Average (EWMA) methods.
+
+1. **Control Parameter Calculation**:
+   The initial step involves calculating control parameters such as the process mean (`mu`) and variance (`sigma2`), which are critical for establishing control limits.
+
+2. **Simulations for In-Control Process**:
+   Simulations are run using the control parameters to estimate the Average Run Length (ARL) and false positive (FP) rates for an in-control process (scenario 0). This step helps to determine the expected number of observations before a false alarm occurs under normal conditions.
+
+3. **Simulations for Out-of-Control Process**:
+   To assess the detection capability of the charts, additional simulations are conducted with a shifted process mean. This calculates the ARL and true positive (TP) rates for an out-of-control process (scenario 1), providing insight into the charts' sensitivity to process deviations.
+
+4. **MA and EWMA Statistic Computation**:
+   The `ma_statistic()` and `ewma_statistic()` functions are used to compute the moving average and exponentially weighted moving average statistics for monitoring process behavior.
+
+5. **Upper and Lower Control Limits**:
+   Upper and lower control limits for MA and EWMA charts are determined to visualize the boundaries within which the process is expected to operate under normal conditions.
+
+```{r setup}
+library(qclc)
+
+set.seed(1234)
+x = rnorm(100)
+```
+
+## Moving Average (MA)
+
+### MA Control Parameters
+
+```{r}
+aux <- control_parm_ma(x, omega = 10)
+```
+
+### MA - Process Under Control (scenario 0)
+
+```{r}
+arl_ma(x, mu = aux$mu, sigma2 = aux$sigma2, 
+      omega = aux$omega, L = seq(1, 5, by = 0.5),
+      max.rl = 90, rl = c(80,85), scenario = 0, 
+      ncores = 1, nboot = 100, seed = 1234)
+```
+
+### MA - Process Out of Control (scenario 1)
+
+```{r}
+x.shift = x + 0.5*(sqrt(var(x))) #mean shifted by 0.5 standard deviation
+arl_ma(x.shift, mu = aux$mu, sigma2 = aux$sigma2, 
+      omega = aux$omega, L = seq(1, 5, by = 0.5),
+      max.rl = 90, rl = c(10,20), scenario = 1, 
+      ncores = 1, nboot = 100, seed = 1234)
+```
+
+### MA statistics
+
+```{r}
+ma_statistic(x, t = 1:length(x), omega = 10)
+```
+
+### Upper and Lower Control Limits for MA
+
+```{r}
+upper_limit_ma(t = 1:length(x), omega =10, mu = aux$mu, sigma2 = aux$sigma2, L = 3)
+lower_limit_ma(t = 1:length(x), omega =10, mu = aux$mu, sigma2 = aux$sigma2, L = 3)
+```
+
+## Exponential Weighted Moving Average (EWMA)
+
+### Calculate EWMA control parameters
+
+```{r}
+aux <- control_parm_ewma(x, lambda = 0.15, max.rl = 100)
+```
+
+### EWMA - Process Under Control (scenario 0)
+
+```{r}
+arl_ewma(x, mu = aux$mu, sigma2 = aux$sigma2, 
+      lambda = aux$lambda, L = seq(1, 5, by = 0.5),
+      max.rl = 100, rl = c(80,85), scenario = 0, 
+      ncores = 1, nboot = 100, seed = 1234)
+```
+
+### EWMA - Process Out of Control (scenario 1)
+
+```{r}
+x.shift = x + 0.5*(sqrt(var(x))) #mean shifted by 0.5 standard deviation
+arl_ewma(x.shift, mu = aux$mu, sigma2 = aux$sigma2, 
+      lambda = aux$lambda, L = seq(1, 5, by = 0.5),
+      max.rl = 100, rl = c(10,20), scenario = 1, 
+      ncores = 1, nboot = 100, seed = 1234)
+```
+
+### EWMA statistics
+
+```{r}
+ewma_statistic(x, t = 1:length(x), lambda = 0.15, x0 = mean(x))  
+```
+
+### Upper and Lower Control Limits for EWMA
+
+```{r}
+upper_limit_ewma(t = 1:length(x), mu = aux$mu, sigma2 = aux$sigma2, L = 3)
+lower_limit_ewma(t = 1:length(x), mu = aux$mu, sigma2 = aux$sigma2, L = 3)
+```
+

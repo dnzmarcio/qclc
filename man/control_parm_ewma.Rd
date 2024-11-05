@@ -10,26 +10,26 @@ control_parm_ewma(x, lambda, max.rl)
 \item{x}{A numeric vector of individual observations obtained from the process.
 In some cases, \code{x} can also indicate sample averages according to a specified sampling plan.}
 
-\item{lambda}{A numeric value between 0 and 1 inclusive that indicates the weighting 
-factor of EWMA charts.It determines the weight given to recent data points. 
-A smaller \code{lambda} gives more weight to recent observations, making the 
+\item{lambda}{A numeric value between 0 and 1 inclusive that indicates the weighting
+factor of EWMA charts.It determines the weight given to recent data points.
+A smaller \code{lambda} gives more weight to recent observations, making the
 chart more sensitive to shifts.}
 
-\item{max.rl}{integer; Maximum Run Length. It refers to the total number of 
-observations to be collected from \code{x} in each process replicate. \code{max.rl} 
+\item{max.rl}{integer; Maximum Run Length. It refers to the total number of
+observations to be collected from \code{x} in each process replicate. \code{max.rl}
 is denoted by \code{i} in the EWMA variance formula. See Details for more information.}
 }
 \value{
 A list containing the following components:
 \itemize{
-  \item \code{mu}: The process mean. Also known as the target mean or the average of the historical data \code{x}.
-  \item \code{sigma2}: The variance of EWMA statistic.
-  \item \code{lambda}: the weighting factor of EWMA charts.
+\item \code{mu}: The process mean. Also known as the target mean or the average of the historical data \code{x}.
+\item \code{sigma2}: The variance of EWMA statistic.
+\item \code{lambda}: the weighting factor of EWMA charts.
 }
 }
 \description{
 \code{control_parm_ewma} computes the essential parameters required for generating
-the Operating Characteristics of EWMA quality control charts. It includes the process 
+the Operating Characteristics of EWMA quality control charts. It includes the process
 mean and the variance of EWMA statistic when the process is in control.
 }
 \details{

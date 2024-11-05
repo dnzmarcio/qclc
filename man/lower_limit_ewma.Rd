@@ -7,16 +7,16 @@
 lower_limit_ewma(t, mu, sigma2, L)
 }
 \arguments{
-\item{t}{An integer vector; representing a sequence from 1 to 
-n, where n denotes the number of observations used in the Exponential 
-Weighted Moving Average. \code{t} is denoted by \code{i} in the LCL formula. 
+\item{t}{An integer vector; representing a sequence from 1 to
+n, where n denotes the number of observations used in the Exponential
+Weighted Moving Average. \code{t} is denoted by \code{i} in the LCL formula.
 See Details for more information.}
 
 \item{mu}{double; process mean. Also known as the target mean or the average of the historical data.}
 
 \item{sigma2}{double: variance of the EWMA statistic.}
 
-\item{L}{A numeric value; the control limit factor. \code{L} represents the width of 
+\item{L}{A numeric value; the control limit factor. \code{L} represents the width of
 the control limits in terms of multiples of the standard deviation.}
 }
 \value{
@@ -26,9 +26,9 @@ A numeric vector of the EWMA Lower Control Limits.
 This function generates the Lower Control Limits for the EWMA quality control charts.
 }
 \details{
-The choice of \code{L} affects the chart's ability to detect process shifts; 
-larger L values set wider control limits from the center line, reducing false alarms but also 
-potentially delaying the detection of real shifts. 
+The choice of \code{L} affects the chart's ability to detect process shifts;
+larger L values set wider control limits from the center line, reducing false alarms but also
+potentially delaying the detection of real shifts.
 The LCL of the EWMA is given by:
 \deqn{LCL(Z_i) = Z_0 - L \sqrt{\sigma^2(Z_i)}}
 }

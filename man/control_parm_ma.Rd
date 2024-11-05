@@ -15,18 +15,18 @@ In some cases, \code{x} can also indicate sample averages according to a specifi
 \value{
 A list containing the following components:
 \itemize{
-  \item \code{mu}: The process mean. Also known as the target mean or the average of the historical data \code{x}.
-  \item \code{sigma2}: The variance of MA statistic.
-  \item \code{omega}: the weighting factor of MA charts.
+\item \code{mu}: The process mean. Also known as the target mean or the average of the historical data \code{x}.
+\item \code{sigma2}: The variance of MA statistic.
+\item \code{omega}: the weighting factor of MA charts.
 }
 }
 \description{
 \code{control_parm_ma} computes the essential parameters required for generating
-the Operating Characteristics of MA quality control charts. It includes the process 
+the Operating Characteristics of MA quality control charts. It includes the process
 mean and the variance of MA statistic when the process is in control.
 }
 \details{
-The Variance of the MA statistic \code{sigma2} is given by: 
+The Variance of the MA statistic \code{sigma2} is given by:
 \deqn{\sigma^2(t) = \left\{ 
 \begin{array}{ll} 
 \frac{\text{var}(x)}{n \cdot \omega} & t \geq \omega \\\\

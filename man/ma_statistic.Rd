@@ -10,7 +10,7 @@ ma_statistic(x, t, omega)
 \item{x}{A numeric vector of individual observations obtained from the process.
 In some cases, \code{x} can also indicate sample averages according to a specified sampling plan.}
 
-\item{t}{An integer vector; representing a sequence from 1 to 
+\item{t}{An integer vector; representing a sequence from 1 to
 n, where n denotes the number of observations used in the Moving Average.}
 
 \item{omega}{integer; the weighting factor of MA charts, also known as the window size.}
@@ -19,7 +19,7 @@ n, where n denotes the number of observations used in the Moving Average.}
 A numeric vector of Moving average statistics.
 }
 \description{
-\code{ma_statistic()} calculates moving averages for a provided time series vector, 
+\code{ma_statistic()} calculates moving averages for a provided time series vector,
 using a defined window size.
 }
 \details{
@@ -32,7 +32,7 @@ The moving average statistic is given by:
 \right.}
 
 where \code{t[i]} is the observation index at time \code{i}, \eqn{\omega} is the weighting factor
-\code{omega}, also known as the window size, on which averages are calculated, 
+\code{omega}, also known as the window size, on which averages are calculated,
 and \code{x_j} is the individual observation of the process \code{x} at time \code{j}.
 }
 \examples{
@@ -42,6 +42,6 @@ print(ma_values)
 
 }
 \seealso{
-\code{\link{arl_ma}}, \code{\link{lower_limit_ma}}, 
+\code{\link{arl_ma}}, \code{\link{lower_limit_ma}},
 \code{\link{upper_limit_ma}}, \code{\link{ewma_statistic}}
 }

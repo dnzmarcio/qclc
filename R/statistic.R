@@ -1,4 +1,3 @@
-
 #' Exponentially Weighted Moving Average statistic
 #'
 #' \code{ewma_statistic()} computes exponentially weighted moving averages for a given 
@@ -35,6 +34,10 @@
 #' @export
 ewma_statistic <- function(x, t, lambda, x0) {
   
+  if (any(is.na(x))) {
+    stop("Input vector 'x' contains NA values. Please ensure all missing values are removed or replaced before using this function.")
+  }
+  
   n = length(t)
   Z = c()
   
@@ -45,7 +48,7 @@ ewma_statistic <- function(x, t, lambda, x0) {
     }
     Z <- c(Z, lambda * sum_term + (1 - lambda)^i * x0)
   }
-  
+
   return(Z)
 }
 
@@ -87,6 +90,11 @@ ewma_statistic <- function(x, t, lambda, x0) {
 #' 
 #' @export
 ma_statistic <- function(x, t, omega) {
+  
+  if (any(is.na(x))) {
+    stop("Input vector 'x' contains NA values. Please ensure all missing values are removed or replaced before using this function.")
+  }
+  
   n <- length(t)
   out <- c()
   
@@ -108,4 +116,3 @@ ma_statistic <- function(x, t, omega) {
   
   return(out)
 }
-
