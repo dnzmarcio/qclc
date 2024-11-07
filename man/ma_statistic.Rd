@@ -13,7 +13,7 @@ In some cases, \code{x} can also indicate sample averages according to a specifi
 \item{t}{An integer vector; representing a sequence from 1 to
 n, where n denotes the number of observations used in the Moving Average.}
 
-\item{omega}{integer; the weighting factor of MA charts, also known as the window size.}
+\item{omega}{integer; refers to the the window size for MA charts that determines how many consecutive observations are weighted equally. For example, with Omega = 10, each of the last 10 observations receives equal weight of 0.1 (⅒). This parameter directly impacts the chart’s smoothing behavior and sensitivity to process changes.}
 }
 \value{
 A numeric vector of Moving average statistics.

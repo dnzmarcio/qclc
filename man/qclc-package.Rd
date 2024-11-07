@@ -7,7 +7,7 @@ qclc is an R package for generating the operating characteristics for Moving Ave
 }
 \details{
 For detailed examples and workflows, see the vignette:
-\code{vignette("qclc-guide", package = "qclc")}.
+\code{vignette("qclc-guide")}.
 }
 \section{Functions}{
 \describe{

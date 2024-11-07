@@ -10,9 +10,7 @@
 #' n, where n denotes the number of observations used in the Exponential 
 #' Weighted Moving Average. \code{t} is denoted by \code{i} in the EWMA statistic formula. 
 #' See Details for more information.
-#' @param lambda A numeric value between 0 and 1 inclusive that indicates the weighting factor of EWMA charts.
-#'               It determines the weight given to recent data points. A smaller \code{lambda} gives more weight to recent observations,
-#'               making the chart more sensitive to shifts.
+#' @param lambda numeric; a weighting factor between 0 and 1 that determines how much emphasis is placed on recent versus historical data in EWMA charts. Smaller λ values give more weight to recent observations, making the chart more sensitive to small process shifts.
 #' @param x0 double; process mean. Also known as the target mean or the average of the 
 #' historical data. \code{x0} is denoted by \code{Z_0} in the EWMA statistic formula. 
 #' See Details for more information.
@@ -62,7 +60,7 @@ ewma_statistic <- function(x, t, lambda, x0) {
 #' In some cases, \code{x} can also indicate sample averages according to a specified sampling plan.
 #' @param t An integer vector; representing a sequence from 1 to 
 #' n, where n denotes the number of observations used in the Moving Average.
-#' @param omega integer; the weighting factor of MA charts, also known as the window size.
+#' @param omega integer; refers to the the window size for MA charts that determines how many consecutive observations are weighted equally. For example, with Omega = 10, each of the last 10 observations receives equal weight of 0.1 (⅒). This parameter directly impacts the chart’s smoothing behavior and sensitivity to process changes.
 #'
 #' @return A numeric vector of Moving average statistics.
 #' 

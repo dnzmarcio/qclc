@@ -10,7 +10,7 @@ lower_limit_ma(t, omega, mu, sigma2, L)
 \item{t}{An integer vector; representing a sequence from 1 to
 n, where n denotes the number of observations used in the Moving Average.}
 
-\item{omega}{integer; the weighting factor of MA charts.}
+\item{omega}{integer; refers to the the window size for MA charts that determines how many consecutive observations are weighted equally. For example, with Omega = 10, each of the last 10 observations receives equal weight of 0.1 (⅒). This parameter directly impacts the chart’s smoothing behavior and sensitivity to process changes.}
 
 \item{mu}{double; process mean. Also known as the target mean or the average of the historical data.}
 

@@ -4,7 +4,7 @@
 #' 
 #' @param t An integer vector; representing a sequence from 1 to 
 #' n, where n denotes the number of observations used in the Moving Average.
-#' @param omega integer; the weighting factor of MA charts.
+#' @param omega integer; refers to the the window size for MA charts that determines how many consecutive observations are weighted equally. For example, with Omega = 10, each of the last 10 observations receives equal weight of 0.1 (⅒). This parameter directly impacts the chart’s smoothing behavior and sensitivity to process changes.
 #' @param mu double; process mean. Also known as the target mean or the average of the historical data.
 #' @param sigma2 double: estimate of the process variance.
 #' @param L A numeric value; the control limit factor. \code{L} represents the width of 
@@ -39,7 +39,7 @@ lower_limit_ma <- function(t, omega, mu, sigma2, L){
 #'
 #' @param t An integer vector; representing a sequence from 1 to 
 #' n, where n denotes the number of observations used in the Moving Average.
-#' @param omega integer; the weighting factor of MA charts. 
+#' @param omega integer; refers to the the window size for MA charts that determines how many consecutive observations are weighted equally. For example, with Omega = 10, each of the last 10 observations receives equal weight of 0.1 (⅒). This parameter directly impacts the chart’s smoothing behavior and sensitivity to process changes.
 #' @param mu double; process mean. Also known as the target mean or the average of the historical data.
 #' @param sigma2 double: estimate of the process variance.
 #' @param L A numeric value; the control limit factor. \code{L} represents the width of 

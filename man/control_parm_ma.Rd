@@ -10,7 +10,7 @@ control_parm_ma(x, omega)
 \item{x}{A numeric vector of individual observations obtained from the process.
 In some cases, \code{x} can also indicate sample averages according to a specified sampling plan.}
 
-\item{omega}{integer; the weighting factor of MA charts.}
+\item{omega}{integer; refers to the the window size for MA charts that determines how many consecutive observations are weighted equally. For example, with Omega = 10, each of the last 10 observations receives equal weight of 0.1 (⅒). This parameter directly impacts the chart’s smoothing behavior and sensitivity to process changes.}
 }
 \value{
 A list containing the following components:
@@ -23,7 +23,7 @@ A list containing the following components:
 \description{
 \code{control_parm_ma} computes the essential parameters required for generating
 the Operating Characteristics of MA quality control charts. It includes the process
-mean and the variance of MA statistic when the process is in control.
+mean and the variance of MA statistic when the process is under control.
 }
 \details{
 The Variance of the MA statistic \code{sigma2} is given by:

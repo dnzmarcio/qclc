@@ -2,11 +2,11 @@
 #' 
 #' \code{control_parm_ma} computes the essential parameters required for generating
 #' the Operating Characteristics of MA quality control charts. It includes the process 
-#' mean and the variance of MA statistic when the process is in control.
+#' mean and the variance of MA statistic when the process is under control.
 #'
 #' @param x A numeric vector of individual observations obtained from the process.
 #' In some cases, \code{x} can also indicate sample averages according to a specified sampling plan.
-#' @param omega integer; the weighting factor of MA charts.
+#' @param omega integer; refers to the the window size for MA charts that determines how many consecutive observations are weighted equally. For example, with Omega = 10, each of the last 10 observations receives equal weight of 0.1 (⅒). This parameter directly impacts the chart’s smoothing behavior and sensitivity to process changes.
 #' 
 #' @return A list containing the following components:
 #' \itemize{
@@ -66,17 +66,12 @@ control_parm_ma <- function(x, omega){
 #' 
 #' \code{control_parm_ewma} computes the essential parameters required for generating
 #' the Operating Characteristics of EWMA quality control charts. It includes the process 
-#' mean and the variance of EWMA statistic when the process is in control.
+#' mean and the variance of EWMA statistic when the process is under control.
 #'
 #' @param x A numeric vector of individual observations obtained from the process.
 #' In some cases, \code{x} can also indicate sample averages according to a specified sampling plan.
-#' @param lambda A numeric value between 0 and 1 inclusive that indicates the weighting 
-#' factor of EWMA charts.It determines the weight given to recent data points. 
-#' A smaller \code{lambda} gives more weight to recent observations, making the 
-#' chart more sensitive to shifts.
-#' @param max.rl integer; Maximum Run Length. It refers to the total number of 
-#' observations to be collected from \code{x} in each process replicate. \code{max.rl} 
-#' is denoted by \code{i} in the EWMA variance formula. See Details for more information.
+#' @param lambda numeric; a weighting factor between 0 and 1 that determines how much emphasis is placed on recent versus historical data in EWMA charts. Smaller λ values give more weight to recent observations, making the chart more sensitive to small process shifts.
+#' @param max.rl integer; Maximum Run Length. It refers to the expected maximum number of observations in the experiment.
 #' 
 #' @return A list containing the following components:
 #' \itemize{

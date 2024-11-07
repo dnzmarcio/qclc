@@ -15,9 +15,7 @@ n, where n denotes the number of observations used in the Exponential
 Weighted Moving Average. \code{t} is denoted by \code{i} in the EWMA statistic formula.
 See Details for more information.}
 
-\item{lambda}{A numeric value between 0 and 1 inclusive that indicates the weighting factor of EWMA charts.
-It determines the weight given to recent data points. A smaller \code{lambda} gives more weight to recent observations,
-making the chart more sensitive to shifts.}
+\item{lambda}{numeric; a weighting factor between 0 and 1 that determines how much emphasis is placed on recent versus historical data in EWMA charts. Smaller λ values give more weight to recent observations, making the chart more sensitive to small process shifts.}
 
 \item{x0}{double; process mean. Also known as the target mean or the average of the
 historical data. \code{x0} is denoted by \code{Z_0} in the EWMA statistic formula.
